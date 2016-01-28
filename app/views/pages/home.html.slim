@@ -1,0 +1,23 @@
+- content_for(:read_new_file) do
+	.row
+		.col-sm-12
+			h3
+				| Neue EngineLog Datei einlesen
+	= simple_form_for @csv_file do |f|
+		.row
+			.col-sm-12
+				= f.input :title, as: :string
+				= f.input :log_start_at, as: :date_picker
+				= f.input :log_end_at, as: :date_picker
+				= f.input :file, as: :file
+		.row
+			.col-sm-12[style="padding:0px;"]
+				.well.centered
+					= f.button :submit, "Log Datei visualisieren", class: "btn btn-primary"
+.row
+	.col-lg-12
+		.panel
+			.panel-inset
+				- @files.each do |file|
+					= link_to file.title, csv_file_path(file)
+					br

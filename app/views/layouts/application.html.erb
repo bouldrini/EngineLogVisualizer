@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EngineLogVisualizer</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id='main-container' class="container-fluid">
+		<div class='row'>
+			<div class='col-sm-3'>
+				<div class='panel'>
+					<div class='panel-inset'>
+						<center>
+							<%= image_tag "bmw_logo.png", style: "height:200px; width:200px; margin-bottom:25px" %>
+						</center>
+						<%= content_for(:read_new_file) %>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-9'>
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

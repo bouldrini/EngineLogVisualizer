@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: EngineLogVisualizer_development
+  host: localhost
+  pool: 5
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: EngineLogVisualizer_test
+  host: localhost
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: EngineLogVisualizer_production
+  host: prod-ip
+  pool: 5

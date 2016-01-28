@@ -1,0 +1,16 @@
+.panel{
+	background-color:$panel_color;
+	color:white;
+	border:2px solid white;
+	h3{
+		margin:0px;
+		margin-bottom:$computed_line_height/2;
+	}
+	a{
+		color:white;
+	}
+	border-radius:10px;
+	.panel-inset{
+		padding:$computed_line_height/2;
+	}
+}
