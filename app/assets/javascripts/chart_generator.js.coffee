@@ -2,8 +2,6 @@
 	console.log server_path
 	$.ajax(server_path, 
 		type: "GET"
-		data:
-			type: ["air_temp", "oil_temp", "pedal", "drossel", "air", "engine_temp"]
 		success: (data) ->
 			console.log data
 			init_line_chart(container, data, "Einheiten", "Zeitpunkt", chart_title, log_start, log_end)
@@ -43,7 +41,7 @@ init_line_chart = (container, values, x_axis_desc, y_axis_desc, chart_title, log
 			}]
 		},
 		tooltip: {
-			headerFormat: '{point.x}<br/>'
+			headerFormat: "",
 			pointFormat: '{series.name}:<br/>{point.y:,.0f}'
 		}
 		legend: {

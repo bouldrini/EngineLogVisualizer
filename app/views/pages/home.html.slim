@@ -3,7 +3,7 @@
 		.col-sm-12
 			h3
 				| Neue EngineLog Datei einlesen
-	= simple_form_for @csv_file do |f|
+	= simple_nested_form_for @csv_file do |f|
 		.row
 			.col-sm-12
 				= f.input :title, as: :string
@@ -18,6 +18,24 @@
 	.col-lg-12
 		.panel
 			.panel-inset
-				- @files.each do |file|
-					= link_to file.title, csv_file_path(file)
-					br
+				.row
+					- @files.each do |file|
+						.file-box
+							.col-sm-12
+								= link_to file.title, csv_file_path(file)
+								= link_to fa_icon("trash-o"), csv_file_path(file), method: :delete, class: "delete-file"
+								.edit-file[id=file.id]
+									= fa_icon("edit")
+							.col-sm-12
+								.file-form[id=file.id]
+									= simple_nested_form_for file, html: {data: {id: file.id}} do |f|
+										.row
+											= f.fields_for :readable_values do |values_form|
+												.col-sm-3
+													= values_form.input :title
+													= values_form.input :unit
+													= values_form.input :index
+													= values_form.link_to_remove fa_icon("trash-o")
+											= f.link_to_add fa_icon("plus"), :readable_values
+										.update-file.sticker[id=file.id]
+											=fa_icon(:check)

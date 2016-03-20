@@ -6,6 +6,10 @@
 //= require jquery
 //= require jquery_ujs
 
+// NESTED FORM
+
+//= require jquery_nested_form
+
 // BOOTSTRAP
 
 //= require moment
@@ -23,3 +27,4 @@
 
 //= require ./highchart
 //= require ./chart_generator
+//= require ./file

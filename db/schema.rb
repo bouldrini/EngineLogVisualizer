@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127150004) do
+ActiveRecord::Schema.define(version: 20160319225513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20160127150004) do
     t.datetime "log_start_at"
     t.datetime "log_end_at"
     t.string   "file"
+  end
+
+  create_table "readable_values", force: :cascade do |t|
+    t.string  "title"
+    t.string  "unit"
+    t.integer "index"
+    t.integer "csv_file_id"
   end
 
 end

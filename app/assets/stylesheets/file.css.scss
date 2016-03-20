@@ -1,0 +1,75 @@
+.panel{
+	.file-box{
+		label{
+			color:black;
+			float:left;
+		}
+		display:inline-block;
+		width:100%;
+		text-align:center;
+		padding:5px;
+		font-size:14px;
+		.file-form{
+			display:none;
+		}
+		a{
+			float:left;
+		}
+		.edit-file{
+			cursor:pointer;
+			float:right;
+			padding-left:5px;
+			padding-right:5px;
+			color:white;
+		}
+		.edit-file:hover{
+			color:blue;
+		}
+		.delete-file{
+			float:right;
+			padding-left:5px;
+			padding-right:5px;
+			color:white;
+		}
+		.delete-file:hover{
+			color:red;
+		}
+
+		.file-form{
+			position:relative;
+			min-height:80px;
+			.sticker{
+				position:absolute;
+				bottom:0px;
+				right:0px;
+				background-color:$bmw_blue;
+				border-top-left-radius: 50px;
+				height:50px;
+				width:50px;
+				cursor:pointer;
+				line-height:50px;
+			}
+		}
+	}
+
+	.file-box:hover{
+		background: white;
+		a{
+			color:black;
+		}
+		.edit-file{
+			color:black;
+		}
+	}
+
+	.file-box.active{
+		background: white;
+		a{
+			color:black;
+		}
+		.edit-file{
+			cursor:pointer;
+			color:blue;
+		}
+	}
+}
