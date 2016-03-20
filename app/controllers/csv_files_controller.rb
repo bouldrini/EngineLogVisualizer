@@ -3,16 +3,7 @@ class CsvFilesController < ApplicationController
 		file = CsvFile.new(csv_file_params)
 		file.file = params[:csv_file][:file]
 		file.save
-		if params[:csv_file][:readable_values_attributes].present?
-			params[:csv_file][:readable_values_attributes].each do |id, obj|
-				value = ReadableValue.new()
-				value.title = obj[:title]
-				value.csv_file = file
-				value.unit = obj[:unit]
-				value.index = obj[:index]
-				value.save
-			end
-		end
+		file.set_readable_values
 		redirect_to root_path
 	end
 
@@ -67,6 +58,7 @@ class CsvFilesController < ApplicationController
 		clone.title = file.title
 		clone.file = file.file
 		clone.save
+		clone.set_readable_values
 		redirect_to root_path
 	end
 

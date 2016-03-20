@@ -4,7 +4,7 @@ class CsvFile < ActiveRecord::Base
 	validates :title, presence: true 
 	validates :file, presence: true 
 
-	has_many :readable_values
+	has_many :readable_values, dependent: :destroy
 	accepts_nested_attributes_for :readable_values
 
 	def to_a()
@@ -19,13 +19,33 @@ class CsvFile < ActiveRecord::Base
 					row = row.split("\t")
 					row[0] = row[0].split(" ")[1]
 					readable_values.each do |value|
-						values[value.title] << row[value.index + 1]
+						values[value.title] << row[value.index]
 					end
 				end
 			end
 			i = i + 1
 		end
 		return values
+	end
+
+	def set_readable_values()
+		i = 0
+		File.open(file.path).each do |row|
+			if i == 0
+				row = row.split("\t")
+				row.each_with_index do |title, index|
+					unless index == 0
+						value = ReadableValue.new()
+						value.title = title
+						value.csv_file = self
+						value.unit = ""
+						value.index = index
+						value.save!
+					end
+				end
+			end
+			i = i + 1
+		end
 	end
 
 	def has_readable_value(title)
