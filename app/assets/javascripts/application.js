@@ -12,10 +12,7 @@
 
 // BOOTSTRAP
 
-//= require moment
-
 //= require bootstrap-sprockets
-//= require bootstrap-datetimepicker
 
 // TABULATR
 

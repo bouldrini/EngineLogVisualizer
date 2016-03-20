@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 20160319225513) do
   enable_extension "plpgsql"
 
   create_table "csv_files", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "log_start_at"
-    t.datetime "log_end_at"
-    t.string   "file"
+    t.string "title"
+    t.string "file"
   end
 
   create_table "readable_values", force: :cascade do |t|

@@ -43,6 +43,8 @@ class CsvFilesController < ApplicationController
 
 	def update
 		file = CsvFile.find(params[:id])
+		file.title = params[:csv_file][:title]
+		file.save
 		file.readable_values.each do |value|
 			value.destroy
 		end
@@ -56,6 +58,15 @@ class CsvFilesController < ApplicationController
 				new_value.save
 			end
 		end
+		redirect_to root_path
+	end
+
+	def clone
+		file = CsvFile.find(params[:id])
+		clone = CsvFile.new()
+		clone.title = file.title
+		clone.file = file.file
+		clone.save
 		redirect_to root_path
 	end
 

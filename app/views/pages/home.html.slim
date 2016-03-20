@@ -7,8 +7,6 @@
 		.row
 			.col-sm-12
 				= f.input :title, as: :string
-				= f.input :log_start_at, as: :date_picker
-				= f.input :log_end_at, as: :date_picker
 				= f.input :file, as: :file
 		.row
 			.col-sm-12[style="padding:0px;"]
@@ -22,16 +20,23 @@
 					- @files.each do |file|
 						.file-box
 							.col-sm-12
-								= link_to file.title, csv_file_path(file)
-								= link_to fa_icon("trash-o"), csv_file_path(file), method: :delete, class: "delete-file"
-								.edit-file[id=file.id]
-									= fa_icon("edit")
+								.row
+									.col-sm-9
+										= link_to file.title, csv_file_path(file)
+									.col-sm-3
+										= link_to fa_icon("trash-o"), csv_file_path(file), method: :delete, class: "delete-file"
+										.edit-file[id=file.id]
+											= fa_icon("edit")
+										= link_to fa_icon("clone"), clone_csv_file_path(file), method: :post, class: "clone-file"
 							.col-sm-12
 								.file-form[id=file.id]
 									= simple_nested_form_for file, html: {data: {id: file.id}} do |f|
 										.row
+											.col-sm-6
+												= f.input :title
+										.row
 											= f.fields_for :readable_values do |values_form|
-												.col-sm-3
+												.col-sm-3[style="margin-bottom:15px;"]
 													= values_form.input :title
 													= values_form.input :unit
 													= values_form.input :index

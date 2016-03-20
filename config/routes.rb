@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post :upload
     end
     member do
+      post :clone
       get "get_values"
     end
   end

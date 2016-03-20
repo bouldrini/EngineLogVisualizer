@@ -1,14 +1,11 @@
-@init_universal_chart = (container ,server_path, chart_title, log_start, log_end) ->
-	console.log server_path
+@init_universal_chart = (container ,server_path, chart_title) ->
 	$.ajax(server_path, 
 		type: "GET"
 		success: (data) ->
-			console.log data
-			init_line_chart(container, data, "Einheiten", "Zeitpunkt", chart_title, log_start, log_end)
+			init_line_chart(container, data, "Einheiten", "Zeitpunkt", chart_title)
 	)
 
-init_line_chart = (container, values, x_axis_desc, y_axis_desc, chart_title, log_start, log_end) ->
-	console.log values.times
+init_line_chart = (container, values, x_axis_desc, y_axis_desc, chart_title) ->
 	$(container).highcharts({
 		chart: {
 			type: 'line'
@@ -18,7 +15,6 @@ init_line_chart = (container, values, x_axis_desc, y_axis_desc, chart_title, log
 			x: -20
 		},
 		subtitle: {
-			text: 'vom ' + log_start + " bis " + log_end,
 			x: -20
 		},
 		xAxis: {
